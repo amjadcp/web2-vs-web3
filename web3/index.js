@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const Handlebars = require('hbs');
+const { vote, result } = require('./voting');
 
 mongoose.connect(process.env.MONGO_URI)
 .then(() => {
@@ -14,7 +15,8 @@ mongoose.connect(process.env.MONGO_URI)
 const candidateSchema = new mongoose.Schema({
     ID: String,
     candidate: String,
-    votes: { type: Number, default: 0 }
+    votes: { type: Number, default: 0 },
+    transactionHashes: [String]
 });
 
 const Candidate = mongoose.model('candidate', candidateSchema);
@@ -39,6 +41,9 @@ app.get('/result', async(req, res)=>{
     for (const candidate of candidates) {
         totalVotes += candidate.votes;
     }
+    const a = await result();
+    console.log(a);
+    
     return res.render('result', {
         totalVotes: totalVotes,
     });
@@ -54,7 +59,8 @@ app.get('/data', async(req, res)=>{
 
 app.post('/vote', async(req, res)=>{
     const { ID } = req.body;
-    const candidate =await Candidate.findOneAndUpdate({ ID: ID }, { $inc: { votes: 1 } });
+    const hash = await vote(ID);
+    const candidate = await Candidate.findOneAndUpdate({ ID: ID }, { $inc: { votes: 1 }, $push: { transactionHashes: hash } });
     return res.json(candidate);
 });
 
