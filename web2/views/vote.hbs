@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voting App</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="app-wrapper">
+        <header>
+            <h1>Vote for Your Candidate</h1>
+        </header>
+
+        <main class="voting-section">
+            <div class="candidate-card">
+                <img src="https://img.freepik.com/premium-photo/avatar-resourcing-company_1254967-6696.jpg" alt="Candidate A">
+                <h2>{{candidate1.candidate}}</h2>
+                <button onclick="vote('{{candidate1.ID}}')">Vote for {{candidate1.candidate}}</button>
+            </div>
+            <div class="candidate-card">
+                <img src="https://img.freepik.com/free-psd/3d-illustration-with-online-avatar_23-2151303097.jpg" alt="Candidate B">
+                <h2>{{candidate2.candidate}}</h2>
+                <button onclick="vote('{{candidate2.ID}}')">Vote for {{candidate2.candidate}}</button>
+            </div>
+            {{!-- <div class="candidate-card">
+                <img src="https://img.freepik.com/free-psd/3d-illustration-business-man-with-glasses_23-2149436194.jpg?w=740" alt="Candidate C">
+                <h2>Candidate C</h2>
+                <button onclick="vote('C')">Vote for C</button>
+            </div> --}}
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
