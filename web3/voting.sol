@@ -16,8 +16,8 @@ contract Voting {
     event votedEvent(string indexed _candidateId);
 
     constructor() {
-        addCandidate("A", "Alice"); // Add initial candidates during contract deployment
-        addCandidate("B", "Bob");
+        addCandidate("A", "Raju"); // Add initial candidates during contract deployment
+        addCandidate("B", "Radha");
     }
 
     function addCandidate(string memory _candidateId, string memory _name) private {

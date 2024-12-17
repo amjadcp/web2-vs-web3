@@ -1,0 +1,22 @@
+[{
+  "_id": {
+    "$oid": "671a8908f0fcc66d122e5416"
+  },
+  "ID": "A",
+  "candidate": "Raju",
+  "votes": 0,
+  "transactionHashes": [
+    ""
+  ]
+},
+{
+  "_id": {
+    "$oid": "671a8d0bf0fcc66d122e5417"
+  },
+  "ID": "B",
+  "candidate": "Radha",
+  "votes": 0,
+  "transactionHashes": [
+    ""
+  ]
+}]
